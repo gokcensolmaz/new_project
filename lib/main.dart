@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,16 +8,16 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
   }
 
@@ -32,25 +32,27 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("First App"),
         ),
-        body: Column(children: <Widget>[
-          Text(questions[questionIndex]),
-          ElevatedButton(
-            onPressed: answerQuestion,
-            child: const Text('Answer1'),
-          ),
-          ElevatedButton(
-            onPressed: answerQuestion,
-            child: const Text('Answer2'),
-          ),
-          ElevatedButton(
-            onPressed: answerQuestion,
-            child: const Text('Answer3'),
-          ),
-          ElevatedButton(
-            onPressed: answerQuestion,
-            child: const Text('Answer4'),
-          ),
-        ]),
+        body: Column(
+          children: <Widget>[
+            Question(questions[_questionIndex]),
+            ElevatedButton(
+              onPressed: _answerQuestion,
+              child: const Text('Answer1'),
+            ),
+            ElevatedButton(
+              onPressed: _answerQuestion,
+              child: const Text('Answer2'),
+            ),
+            ElevatedButton(
+              onPressed: _answerQuestion,
+              child: const Text('Answer3'),
+            ),
+            ElevatedButton(
+              onPressed: _answerQuestion,
+              child: const Text('Answer4'),
+            ),
+          ],
+        ),
       ),
     );
   }
